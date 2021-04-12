@@ -89,7 +89,32 @@ int show(int result) {
     return result;
 }
 
-   
+//判定输赢
+void judge(Player& p, Computer& c) {
+    if(c.getcChioce()== 0 && p.getpChioce()== 1 || c.getcChioce() == 1 && p.getpChioce()== 2 || c.getcChioce()== 2 && p.getpChioce() == 0) {
+        //计算机玩家赢了，获取赢的次数并加 1，再赋值给赢的次数
+        c.setcWin(c.getcWin() + 1);
+        cout << "计算机赢了! 嘿嘿 ！" << endl;
+    }
+        else if (c.getcChioce()== p.getpChioce()) {
+        cout << "哈! 平局哦!" << endl;
+        }
+        else {
+        //玩家（你）赢了，获取赢的次数并加 1，再赋值给赢的次数
+        p.setpWin(p.getpWin() + 1);
+        cout << "竟然被你赢了,额..." << endl;
+        }
+
+
+}
+
+//打印猜拳最终结果
+void showresult(int t, int p, int c) {
+    cout << "你一共进行了" << t<< "个回合.\n你赢了"
+        << p<< "局\n计算机赢了"
+        << c<< "局\n平局"   << t-c-p << "次\n";
+}
+
 int main() {
     srand((unsigned int)time(NULL));
 
@@ -107,40 +132,19 @@ int main() {
         player.setpChioce(play());
         //计算机随机出拳
         computer.setcChioce(show(rand() % 3));
+        judge(player, computer);
 
-        int com = computer.getcChioce();
-        int play = player.getpChioce();
-
-        //比较出拳输赢
-        if (com == 0 && play == 1 || com == 1 && play == 2 || com == 2 && play == 0) {
-            //计算机玩家赢了，获取赢的次数并加 1，再赋值给赢的次数
-            computer.setcWin(computer.getcWin() + 1);
-            cout << "计算机赢了! 嘿嘿 ！" << endl;
-        }
-        else if (com == play) {
-            cout << "哈! 平局哦!" << endl;
-        }
-        else {
-            //玩家（你）赢了，获取赢的次数并加 1，再赋值给赢的次数
-            player.setpWin(player.getpWin() + 1);
-            cout << "竟然被你赢了,额..." << endl;
-        }
         total++;
 
         //设置退出选择
         string sign;
-        cout << "\n不玩了按0退出，按其他键继续与之一战\n";cin >> sign;
+        cout << "\n不玩了按0退出，按其他键继续与之一战\n";
+        cin >> sign;
          
           system("cls");
                 
           if (sign == "0") flag = 0;
     }
-
-    cout << "你一共进行了" << total << "个回合.\n你赢了" 
-        << player.getpWin()<< "局\n计算机赢了" 
-        << computer.getcWin() << "局\n平局"
-        << total - computer.getcWin() - player.getpWin() << "次\n";
-        
-
+    showresult(total, player.getpWin(), computer.getcWin());
     return 0;
 }
