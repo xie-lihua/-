@@ -3,32 +3,32 @@
 #include<ctime>
 using namespace std;
 
-//¶¨Òå¼ÆËã»úÍæ¼ÒÀà
+//å®šä¹‰è®¡ç®—æœºç©å®¶ç±»
 class Computer {
 private:
-    int c_win=0;//¼ÇÂ¼Ó®µÄ´ÎÊı
-    int c_choice;//¼ÇÂ¼³öÈ­Ñ¡Ôñ
+    int c_win=0;//è®°å½•èµ¢çš„æ¬¡æ•°
+    int c_choice;//è®°å½•å‡ºæ‹³é€‰æ‹©
 
 public:
-    //½øĞĞ³öÈ­
+    //è¿›è¡Œå‡ºæ‹³
     void setcChioce(int choice) {
         c_choice = choice;
     }
-    //»ñµÃ³öÈ­½á¹û
+    //è·å¾—å‡ºæ‹³ç»“æœ
     int getcChioce() {
         return c_choice;
     }
-    //¸Ä±äÓ®µÄ´ÎÊı
+    //æ”¹å˜èµ¢çš„æ¬¡æ•°
     void setcWin(int win) {
         c_win = win;
     }
-    //»ñµÃÓ®µÄ´ÎÊı
+    //è·å¾—èµ¢çš„æ¬¡æ•°
     int getcWin() {
         return c_win;
     }
 };
 
-//¶¨ÒåÍæ¼ÒÀà£¬Í¬ÉÏ
+//å®šä¹‰ç©å®¶ç±»ï¼ŒåŒä¸Š
 class Player {
 private:
     int p_win=0;
@@ -50,95 +50,95 @@ public:
     }
 };
 
-//¶¨ÒåÍæ¼Ò³öÈ­º¯Êı
+//å®šä¹‰ç©å®¶å‡ºæ‹³å‡½æ•°
 int play() {
 
-    cout << "\n¼ÆËã»úÒÑ¾­³öºÃÁË£¬Äã¿ì³öÅ¶!\n\n";
+    cout << "\nè®¡ç®—æœºå·²ç»å‡ºå¥½äº†ï¼Œä½ å¿«å‡ºå“¦!\n\n";
     int result;
-    cout << "\t0-Ê¯Í· 1-¼ôµ¶ 2-²¼" << endl;
-  chuquan:  cout << "Çë³öÈ­: ";
+    cout << "\t0-çŸ³å¤´ 1-å‰ªåˆ€ 2-å¸ƒ" << endl;
+  chuquan:  cout << "è¯·å‡ºæ‹³: ";
 
     cin >> result;
     
     string jg;
     switch (result) {
-    case 0:jg = "Ê¯Í·"; break;
-    case 1:jg = "¼ôµ¶"; break;
-    case 2:jg = "²¼"; break;
+    case 0:jg = "çŸ³å¤´"; break;
+    case 1:jg = "å‰ªåˆ€"; break;
+    case 2:jg = "å¸ƒ"; break;
     default: {
-        //Èç¹û²»°´Êı×Ö 1£¬2£¬3£¬ÔòÖØĞÂÊäÈë
-        cout << " Éµ* ! ²»ÒªÂÒ³öÈ­£¬¿´ÇåÊı×Ö!\n";
+        //å¦‚æœä¸æŒ‰æ•°å­— 1ï¼Œ2ï¼Œ3ï¼Œåˆ™é‡æ–°è¾“å…¥
+        cout << " å‚»* ! ä¸è¦ä¹±å‡ºæ‹³ï¼Œçœ‹æ¸…æ•°å­—!\n";
         
         goto chuquan; break;
     }
     }
-    cout << "Äã³öµÄÊÇ " << jg << endl;
+    cout << "ä½ å‡ºçš„æ˜¯ " << jg << endl;
     return result;
 }
 
-//Õ¹Ê¾¼ÆËã»ú³öÈ­½á¹û
+//å±•ç¤ºè®¡ç®—æœºå‡ºæ‹³ç»“æœ
 int show(int result) {
     string jg2;
     switch (result) {
         
-    case 0:jg2 = "Ê¯Í·"; break;
-    case 1:jg2 = "¼ôµ¶"; break;
-    case 2:jg2 = "²¼"; break;
+    case 0:jg2 = "çŸ³å¤´"; break;
+    case 1:jg2 = "å‰ªåˆ€"; break;
+    case 2:jg2 = "å¸ƒ"; break;
     }
-    cout << "¼ÆËã»ú³öµÄÊÇ" << jg2 << endl;
+    cout << "è®¡ç®—æœºå‡ºçš„æ˜¯" << jg2 << endl;
     return result;
 }
 
-//ÅĞ¶¨ÊäÓ®
+//åˆ¤å®šè¾“èµ¢
 void judge(Player& p, Computer& c) {
     if(c.getcChioce()== 0 && p.getpChioce()== 1 || c.getcChioce() == 1 && p.getpChioce()== 2 || c.getcChioce()== 2 && p.getpChioce() == 0) {
-        //¼ÆËã»úÍæ¼ÒÓ®ÁË£¬»ñÈ¡Ó®µÄ´ÎÊı²¢¼Ó 1£¬ÔÙ¸³Öµ¸øÓ®µÄ´ÎÊı
+        //è®¡ç®—æœºç©å®¶èµ¢äº†ï¼Œè·å–èµ¢çš„æ¬¡æ•°å¹¶åŠ  1ï¼Œå†èµ‹å€¼ç»™èµ¢çš„æ¬¡æ•°
         c.setcWin(c.getcWin() + 1);
-        cout << "¼ÆËã»úÓ®ÁË! ºÙºÙ £¡" << endl;
+        cout << "è®¡ç®—æœºèµ¢äº†! å˜¿å˜¿ ï¼" << endl;
     }
         else if (c.getcChioce()== p.getpChioce()) {
-        cout << "¹ş! Æ½¾ÖÅ¶!" << endl;
+        cout << "å“ˆ! å¹³å±€å“¦!" << endl;
         }
         else {
-        //Íæ¼Ò£¨Äã£©Ó®ÁË£¬»ñÈ¡Ó®µÄ´ÎÊı²¢¼Ó 1£¬ÔÙ¸³Öµ¸øÓ®µÄ´ÎÊı
+        //ç©å®¶ï¼ˆä½ ï¼‰èµ¢äº†ï¼Œè·å–èµ¢çš„æ¬¡æ•°å¹¶åŠ  1ï¼Œå†èµ‹å€¼ç»™èµ¢çš„æ¬¡æ•°
         p.setpWin(p.getpWin() + 1);
-        cout << "¾¹È»±»ÄãÓ®ÁË,¶î..." << endl;
+        cout << "ç«Ÿç„¶è¢«ä½ èµ¢äº†,é¢..." << endl;
         }
 
 
 }
 
-//´òÓ¡²ÂÈ­×îÖÕ½á¹û
+//æ‰“å°çŒœæ‹³æœ€ç»ˆç»“æœ
 void showresult(int t, int p, int c) {
-    cout << "ÄãÒ»¹²½øĞĞÁË" << t<< "¸ö»ØºÏ.\nÄãÓ®ÁË"
-        << p<< "¾Ö\n¼ÆËã»úÓ®ÁË"
-        << c<< "¾Ö\nÆ½¾Ö"   << t-c-p << "´Î\n";
+    cout << "ä½ ä¸€å…±è¿›è¡Œäº†" << t<< "ä¸ªå›åˆ.\nä½ èµ¢äº†"
+        << p<< "å±€\nè®¡ç®—æœºèµ¢äº†"
+        << c<< "å±€\nå¹³å±€"   << t-c-p << "æ¬¡\n";
 }
 
 int main() {
     srand((unsigned int)time(NULL));
 
-    cout << "\tÈË»ú²ÂÈ­ÓÎÏ·\n";
+    cout << "\täººæœºçŒœæ‹³æ¸¸æˆ\n";
 
-    int total = 0;//×Ü»ØºÏÊı
-    Player player;//ÊµÀı»¯Íæ¼Ò¶ÔÏó
-    Computer computer;//ÊµÀı»¯¼ÆËã»ú¶ÔÏó
+    int total = 0;//æ€»å›åˆæ•°
+    Player player;//å®ä¾‹åŒ–ç©å®¶å¯¹è±¡
+    Computer computer;//å®ä¾‹åŒ–è®¡ç®—æœºå¯¹è±¡
 
-    //¶¨Òå±ê¼Ç£¬ÒÔ±ãÌø³öÑ­»·
+    //å®šä¹‰æ ‡è®°ï¼Œä»¥ä¾¿è·³å‡ºå¾ªç¯
     int flag = 1;
     while (flag==1) {
 
-        //µ÷ÓÃÍæ¼Ò³öÈ­º¯Êı²¢¸³Öµ¸øÍæ¼Ò³öÈ­½á¹û
+        //è°ƒç”¨ç©å®¶å‡ºæ‹³å‡½æ•°å¹¶èµ‹å€¼ç»™ç©å®¶å‡ºæ‹³ç»“æœ
         player.setpChioce(play());
-        //¼ÆËã»úËæ»ú³öÈ­
+        //è®¡ç®—æœºéšæœºå‡ºæ‹³
         computer.setcChioce(show(rand() % 3));
         judge(player, computer);
 
         total++;
 
-        //ÉèÖÃÍË³öÑ¡Ôñ
+        //è®¾ç½®é€€å‡ºé€‰æ‹©
         string sign;
-        cout << "\n²»ÍæÁË°´0ÍË³ö£¬°´ÆäËû¼ü¼ÌĞøÓëÖ®Ò»Õ½\n";
+        cout << "\nä¸ç©äº†æŒ‰0é€€å‡ºï¼ŒæŒ‰å…¶ä»–é”®ç»§ç»­ä¸ä¹‹ä¸€æˆ˜\n";
         cin >> sign;
          
           system("cls");
